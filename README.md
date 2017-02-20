@@ -1,3 +1,25 @@
+# 搭建本地git服务器 & 使用方法
+## 搭建方法
+```
+$ sudo apt-get install git
+$ sudo adduser git
+收集所有需要登录的用户的公钥，就是他们自己的id_rsa.pub文件，把所有公钥导入到/home/git/.ssh/authorized_keys文件里，一行一个。
+先选定一个目录作为Git仓库，假定是/srv/sample.git，在/srv目录下输入命令：
+sudo git init --bare sample.git
+$ sudo chown -R git:git sample.git
+出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：
+git:x:1001:1001:,,,:/home/git:/bin/bash
+改为：
+git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+```
+##使用方法
+```
+$ git clone git@server:/srv/sample.git
+$ git add -A
+$ git commit -m "some description about edition"
+$ git push
+```
+
 # gitskills
 
 $ git config --global user.name "Your Name"     
