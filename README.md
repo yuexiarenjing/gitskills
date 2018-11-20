@@ -14,7 +14,7 @@ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 ```
 ##使用方法
 ```
-$ git clone git@server:/srv/sample.git
+$ git clone [-b branchname] git@server:/srv/sample.git
 $ git add -A
 $ git commit -m "some description about edition"
 $ git push
